@@ -1,75 +1,52 @@
-# Markov Decision Process (MDP)
+# 🧠 Markov Decision Process (MDP)
 
-A simple Python implementation of a **Markov Decision Process (MDP)** using the **Value Iteration** algorithm.
+> A beginner-friendly implementation of a **Markov Decision Process (MDP)** using the **Value Iteration** algorithm in pure Python.
 
-## Overview
+<p align="center">
 
-This project demonstrates decision-making in a simple **Weather & Commute** scenario. The agent observes the current weather and chooses between **Walk** and **Bus** to maximize long-term rewards.
+![Python](https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Algorithm](https://img.shields.io/badge/Algorithm-Value%20Iteration-8A2BE2?style=for-the-badge)
+![Dependencies](https://img.shields.io/badge/Dependencies-None-2ea44f?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
 
-## MDP Components
+</p>
 
-**States:** `Sunny`, `Rainy`
-**Actions:** `Walk`, `Bus`
-**Discount Factor:** `γ = 0.9`
+---
 
-**Rewards:**
+## 📌 About
 
-| Weather | Walk | Bus |
-| ------- | ---: | --: |
-| Sunny   |  +10 |  +2 |
-| Rainy   |  -10 |  +5 |
+This project implements a simple **Markov Decision Process** in Python using a Weather & Commute scenario. The program represents different weather conditions as states, allows the agent to choose between walking and taking the bus, assigns rewards to each decision, models the probability of weather changes, and uses **Value Iteration** to calculate the long-term value of each state and determine the optimal policy.
 
-**Transition Probabilities:**
+The implementation is intentionally kept simple and uses only standard Python features, making it easy to understand, run, and explain.
 
-| Current Weather | Sunny | Rainy |
-| --------------- | ----: | ----: |
-| Sunny           |   0.8 |   0.2 |
-| Rainy           |   0.4 |   0.6 |
+---
 
-## Value Iteration
+## 🎯 Problem Statement
 
-The program calculates the expected long-term value of each action using the Bellman Optimality Equation:
+Imagine an agent that needs to travel depending on the current weather. On a sunny day, walking is more rewarding than taking the bus, while on a rainy day, taking the bus is a better choice. However, the weather can change in the future, so the agent must consider both the immediate reward and the expected future rewards before selecting an action.
 
-$$
-V(s)=\max_a[R(s,a)+\gamma\sum_{s'}P(s'|s,a)V(s')]
-$$
+The goal is to find the **optimal policy** that maximizes the expected long-term reward.
 
-The algorithm repeatedly updates the state values and then selects the action with the highest expected value.
+---
 
-## Functions
+## 🧩 MDP Components
 
-`calculate_value()` calculates the value of an action using rewards, transition probabilities, the discount factor, and future state values. `value_iteration()` calculates the state values, while `get_policy()` uses those values to determine the optimal action for each state.
+A Markov Decision Process is represented using four main components: **States, Actions, Rewards, and Transition Probabilities**. This implementation also uses a discount factor to control the importance of future rewards.
 
-## How to Run
+| Component | Description |
+|---|---|
+| **States** | `Sunny`, `Rainy` |
+| **Actions** | `Walk`, `Bus` |
+| **Rewards** | Reward received for each state-action pair |
+| **Transitions** | Probability of moving to the next weather state |
+| **Discount Factor** | `γ = 0.9` |
 
-No external libraries are required. Make sure Python is installed and run:
+---
 
-```bash
-python mdp.py
-```
+## 🌦️ Environment
 
-## Output
+The environment contains two possible states:
 
 ```text
-Markov Decision Process
-
-Calculated State Values:
-Sunny = 56.88
-Rainy = 49.07
-
-Optimal Policy:
-Sunny → Walk
-Rainy → Bus
-```
-
-## Project Structure
-
-```text
-Markov-Decision-Process/
-├── mdp.py
-└── README.md
-```
-
-## Technologies
-
-**Python • Markov Decision Process • Value Iteration**
+☀️ Sunny
+🌧️ Rainy
